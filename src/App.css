@@ -1,4 +1,13 @@
-
+.display {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .App-header {
   background-color: #282c34;
@@ -306,4 +315,26 @@ th, td {
 
 .table-filters input, .table-filters select {
   padding: 5px;
+}
+
+@keyframes scrollAnnouncement {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.announcement {
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #f9ed69; /* Yellow background, change as needed */
+  padding: 10px 0;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+}
+
+.announcement span {
+  display: inline-block;
+  animation: scrollAnnouncement 10s linear infinite; /* Adjust 10s to control speed */
 }

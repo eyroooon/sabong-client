@@ -307,6 +307,9 @@ function App() {
       <div className="display">
         {role === 'display' && (
           <>
+            <div className="announcement">
+              <span>📢 Your announcement message goes here!</span>
+            </div>
             <header className="App-header">
               <h1>Texas Cockpit Arena</h1>
             </header>
