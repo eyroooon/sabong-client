@@ -96,6 +96,10 @@ function App() {
     } else if (username === 'display' && password === 'password') {
       setRole('display');
       setLoggedIn(true);
+    } else if (username === 'admin' && password === 'adminpassword') {
+      // Add this condition
+      setRole('admin');
+      setLoggedIn(true);
     } else {
       alert('Invalid credentials!');
     }
@@ -166,6 +170,140 @@ function App() {
       </div>
     );
   }
+
+  if (role === 'admin') {
+    return (
+      <div className="App">
+        <>
+          <div className="left-section">
+            <>
+              <header className="App-header">
+                <h1>Texas Cockpit Arena</h1>
+              </header>
+              <div className="totals-section">
+                <div className="total">
+                  <h2>Total Meron Bet: </h2>
+                  <span>{totalMeronBet}</span>
+                </div>
+                <div className="total">
+                  <h2>Total Wala Bet: </h2>
+                  <span>{totalWalaBet}</span>
+                </div>
+              </div>
+              <div className="odds-section">
+                <div className="odd">
+                  <h2>Meron Odds</h2>
+                  <span>{meronOdds}</span>
+                </div>
+                <div className="odd">
+                  <h2>Wala Odds</h2>
+                  <span>{walaOdds}</span>
+                </div>
+              </div>
+              <div className="commission-section">
+                <h2>Commission</h2>
+                <span>{commission}</span>
+              </div>
+              <div className="history-section">
+                <h2>Fight History</h2>
+                <div className="big-road">
+                  {transformToBigRoad(gameOutcomes).map((column, colIndex) => (
+                    <div key={colIndex} className="column">
+                      {column.map((outcome, rowIndex) => (
+                        <div key={rowIndex} className={`cell ${outcome}`}></div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="control-section">
+                <div className="fight-control-section">
+                  <button className="fight-btn open-fight-btn">Open Fight</button>
+                  <button className="fight-btn close-fight-btn">Close Fight</button>
+                  <button className="fight-btn cancel-fight-btn">Cancel Fight</button>
+                </div>
+                <div className="winner-declaration-section">
+                  <h2>Declare Winner</h2>
+                  <button className="winner-btn meron-btn" onClick={() => {}}>
+                    Meron Wins
+                  </button>
+                  <button className="winner-btn draw-btn" onClick={() => {}}>
+                    Draw
+                  </button>
+                  <button className="winner-btn wala-btn" onClick={() => {}}>
+                    Wala Wins
+                  </button>
+                </div>
+              </div>
+              <ul className="messages">
+                {messages.map((msg, index) => (
+                  <li key={index}>{msg}</li>
+                ))}
+              </ul>
+            </>
+          </div>
+          <div className="right-section">
+            <div className="table-filters">
+              <input
+                placeholder="Fight No."
+                value={filters.fightNo}
+                onChange={(e) => setFilters({ ...filters, fightNo: e.target.value })}
+              />
+              <select value={filters.bet} onChange={(e) => setFilters({ ...filters, bet: e.target.value })}>
+                <option value="">All</option>
+                <option value="Meron">Meron</option>
+                <option value="Wala">Wala</option>
+                <option value="Draw">Draw</option>
+              </select>
+              <input
+                type="number"
+                placeholder="Bet Amount"
+                value={filters.betAmount}
+                onChange={(e) => setFilters({ ...filters, betAmount: e.target.value })}
+              />
+              <select value={filters.win} onChange={(e) => setFilters({ ...filters, win: e.target.value })}>
+                <option value="">All</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+              <input type="time" value={filters.time} onChange={(e) => setFilters({ ...filters, time: e.target.value })} />
+              <input
+                placeholder="Fight ID"
+                value={filters.fightId}
+                onChange={(e) => setFilters({ ...filters, fightId: e.target.value })}
+              />
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Fight No.</th>
+                  <th>Bet</th>
+                  <th>Bet Amount</th>
+                  <th>Win</th>
+                  <th>Time</th>
+                  <th>Fight ID</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tableData.map((item) => (
+                  <tr key={item.fightId}>
+                    <td>{item.fightNo}</td>
+                    <td>{item.bet}</td>
+                    <td>{item.betAmount}</td>
+                    <td>{item.win ? 'Yes' : 'No'}</td>
+                    <td>{item.time}</td>
+                    <td>{item.fightId}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      </div>
+    );
+  }
+
   if (role === 'teller') {
     return (
       <div className="App">
@@ -302,6 +440,7 @@ function App() {
       </div>
     );
   }
+
   if (role === 'display') {
     return (
       <div className="display">
