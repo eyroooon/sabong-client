@@ -1,0 +1,238 @@
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 5px;
+  color: #e0e0e0;
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.input-section {
+  padding: 25px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-group input {
+  width: 80%;
+  height: 40px;
+  font-size: 18px;
+  padding-left: 10px;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.label-text {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.input-group button {
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.meron-btn {
+  background-color: red;
+  color: white;
+}
+
+.wala-btn {
+  background-color: blue;
+  color: white;
+}
+
+input {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  width: 60%;
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid #ddd;
+  margin: 8px 0;
+  padding: 8px;
+  background-color: #f4f4f4;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+li:hover {
+  background-color: #e0e0e0;
+}
+
+.odds-section,
+.commission-section,
+.totals-section {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.odd, .total {
+  flex: 1;
+  text-align: center;
+}
+
+.odd:not(:last-child),
+.total:not(:last-child) {
+  margin-right: 20px;
+}
+
+.odd h2, .commission-section h2 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.odd span, .commission-section span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.total h3 {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.total span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.input-section > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+input[type='number'] {
+  margin-right: 10px;
+}
+.history-section {
+  width: 60%;
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.scoreboard {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr); /* Assuming 30 columns, adjust as needed */
+  grid-auto-rows: 25px; /* Height of each row */
+  gap: 2px 2px; /* Row gap and column gap */
+  margin-top: 15px;
+  justify-items: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  border: 1px solid #888;
+  max-height: 200px; /* Limiting the height of the scoreboard */
+  overflow-y: auto; /* Making the scoreboard scrollable vertically */
+}
+
+.entry {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* Making entries circles */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.entry.player {
+  background-color: #007bff;
+}
+
+.entry.banker {
+  background-color: #ff4500;
+}
+
+.entry.tie {
+  background-color: transparent;
+  border: 2px solid #32cd32;
+}
+
+/* If you want to show ties on the same square with a small dot, you can use a pseudo-element: */
+
+.entry.tie-dot:before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #32cd32;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
