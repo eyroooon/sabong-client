@@ -308,7 +308,11 @@ function App() {
         {role === 'display' && (
           <>
             <div className="announcement">
-              <span>📢 Your announcement message goes here!</span>
+              <span>
+                📢 TEXAS COCKPIT ARENA ay may handog sa lahat ng sasali sa AUG 15- tuesday 5K PER WIN PLUS BRAND NEW HONDA DIO
+                RAFFLE TO ALL PARTICIPANTS WIN DRAW OR LOSS SALIHAN PO NATIN TO MGA KASABONG. NO POT MONEY PO TAYO LAHAT 5500 ANG
+                MINIMUM BET
+              </span>
             </div>
             <header className="App-header">
               <h1>Texas Cockpit Arena</h1>

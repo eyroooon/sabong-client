@@ -326,15 +326,30 @@ th, td {
   }
 }
 
+/* ... [rest of the styles remain unchanged] */
+
 .announcement {
   overflow: hidden;
   white-space: nowrap;
   background-color: #f9ed69; /* Yellow background, change as needed */
   padding: 10px 0;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  width: 100%; /* Ensure it takes the full width */
+  text-align: center; /* Center the text */
+  font-size: 7.5em; /* Increase font size for visibility */
+  margin-bottom: 20px; /* Add some space below the announcement */
 }
 
 .announcement span {
   display: inline-block;
-  animation: scrollAnnouncement 10s linear infinite; /* Adjust 10s to control speed */
+  animation: scrollAnnouncement 50s linear infinite; /* Adjust 30s to control speed */
+}
+
+@keyframes scrollAnnouncement {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
