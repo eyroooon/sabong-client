@@ -1,6 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 
+const transformToBigRoad = (outcomes) => {
+  let bigRoad = [];
+  let currentColumn = [];
+  let lastOutcome = null;
+
+  outcomes.forEach((outcome) => {
+    if (outcome === 'tie') {
+      // Handle tie, e.g., add a tie marker to the last cell in currentColumn
+      // If you want to represent ties as separate cells, you can push them to currentColumn
+    } else if (lastOutcome === outcome || lastOutcome === null) {
+      currentColumn.push(outcome);
+    } else {
+      bigRoad.push(currentColumn);
+      currentColumn = [outcome];
+    }
+    lastOutcome = outcome;
+  });
+
+  if (currentColumn.length > 0) {
+    bigRoad.push(currentColumn);
+  }
+
+  return bigRoad;
+};
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [role, setRole] = useState('');
@@ -15,6 +40,24 @@ function App() {
   const [walaOdds, setWalaOdds] = useState(0);
   const [commission, setCommission] = useState(0);
   const [betAmount, setBetAmount] = useState('');
+  const [gameOutcomes, setGameOutcomes] = useState([
+    'player',
+    'player',
+    'player',
+    'banker',
+    'player',
+    'banker',
+    'player',
+    'player',
+    'tie',
+    'player',
+    'banker',
+  ]);
+
+  const recordOutcome = (outcome) => {
+    setGameOutcomes((prevOutcomes) => [...prevOutcomes, outcome]);
+  };
+
   const handleLogin = () => {
     if (username === 'admin' && password === 'password') {
       setRole('admin');
@@ -124,16 +167,16 @@ function App() {
             <h2>Commission</h2>
             <span>{commission}</span>
           </div>
-          <div class="history-section">
-            <h2>History Winner</h2>
-            <div class="scoreboard">
-              <div class="entry player"></div>
-              <div class="entry player"></div>
-              <div class="entry player"></div>
-              <div class="entry player"></div>
-              <div class="entry player"></div>
-              <div class="entry banker"></div>
-              <div class="entry tie"></div>
+          <div className="history-section">
+            <h2>Big Road Scoreboard</h2>
+            <div className="big-road">
+              {transformToBigRoad(gameOutcomes).map((column, colIndex) => (
+                <div key={colIndex} className="column">
+                  {column.map((outcome, rowIndex) => (
+                    <div key={rowIndex} className={`cell ${outcome}`}></div>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
           <div className="input-section">
@@ -186,6 +229,18 @@ function App() {
             <div className="odd">
               <h2>Wala Odds</h2>
               <span>{walaOdds}</span>
+            </div>
+          </div>
+          <div className="history-section">
+            <h2>Big Road Scoreboard</h2>
+            <div className="big-road">
+              {transformToBigRoad(gameOutcomes).map((column, colIndex) => (
+                <div key={colIndex} className="column">
+                  {column.map((outcome, rowIndex) => (
+                    <div key={rowIndex} className={`cell ${outcome}`}></div>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </>

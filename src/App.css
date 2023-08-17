@@ -130,7 +130,8 @@ li:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.odd, .total {
+.odd,
+.total {
   flex: 1;
   text-align: center;
 }
@@ -140,13 +141,15 @@ li:hover {
   margin-right: 20px;
 }
 
-.odd h2, .commission-section h2 {
+.odd h2,
+.commission-section h2 {
   color: #333;
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-.odd span, .commission-section span {
+.odd span,
+.commission-section span {
   font-size: 24px;
   font-weight: bold;
 }
@@ -177,16 +180,6 @@ li:hover {
 
 input[type='number'] {
   margin-right: 10px;
-}
-.history-section {
-  width: 60%;
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
 
 .scoreboard {
@@ -235,4 +228,47 @@ input[type='number'] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.history-section {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.big-road {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2px;
+}
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  position: relative;
+  margin-bottom: 2px;
+  border-radius: 50%; /* This makes the cell appear as a circle */
+}
+
+.cell.player {
+  background-color: blue;
+}
+
+.cell.banker {
+  background-color: red;
+}
+
+.cell.tie::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, transparent 45%, green 45%, green 55%, transparent 55%);
 }
